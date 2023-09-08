@@ -16,14 +16,11 @@ import { Observable } from 'rxjs';
 export class DialogAddUserComponent {
   user = new User();
   birthDate!: Date;
-  public firestore: Firestore = inject(Firestore);
-  users$: Observable<{}[]>;
+  firestore: Firestore = inject(Firestore);
   loading = false;
 
 
   constructor(private dialogRef: MatDialogRef<DialogAddUserComponent>) {
-    const usersCollectionRef = collection(this.firestore, 'users');
-    this.users$ = collectionData(usersCollectionRef);
   }
 
 
@@ -36,8 +33,8 @@ export class DialogAddUserComponent {
     this.user.birthDate = this.birthDate.getTime();
     this.loading = true;
 
-    let usersCollectionRef = collection(this.firestore, 'users');
-    addDoc(usersCollectionRef, this.user.toJSON());
+    let usersCollectionRef = collection(this.firestore, 'users');  // <-- damit legt man eine Sammlung mit dem Namen 'users' in der Firestore Datenbank an
+    addDoc(usersCollectionRef, this.user.toJSON());   // <-- damit fügt man einen Json Datensatz(siehe user.class.ts) zu dieser Datenbank hinzu
 
     setTimeout(() => {
       this.loading = false;

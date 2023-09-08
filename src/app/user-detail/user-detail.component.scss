@@ -1,0 +1,33 @@
+.user-detail-header {
+    min-height: 250px;
+    background-color: #2A3647;
+    color: white;
+    display: flex;
+    justify-content:  flex-end;
+
+    .profile-img {
+        width: 100px;
+        border-radius: 100%;
+        margin: 16px;
+        object-fit: cover;
+    }
+
+    .margin-left {
+        margin-left: 16px;
+    
+        h2 {
+            margin-bottom: 0px;
+        }
+    }
+
+    .header-box {
+        display: flex;
+        align-items: center;
+    }
+}
+
+
+
+
+
+

@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { User } from 'src/models/user.class';
 import { Firestore, collectionData } from '@angular/fire/firestore';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, doc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -21,11 +21,11 @@ export class UserComponent {
 
   constructor(public dialog: MatDialog) {
 
-    this.users$ = collectionData(collection(this.firestore, 'users')); // <-- users$ wird mit unsere DB verknüpft 
-    this.users$
+    this.users$ = collectionData(collection(this.firestore, 'users'), { idField: 'id' }); // <-- users$ wird mit unsere DB verknüpft und die Daten + id abgerufen
     this.users$.subscribe((changes: any) => {           // <-- subscribe loggt und jedes mal raus, wenn etwas an der DB geändert wird
       this.allUsers = changes;
       console.log('Alle User', this.allUsers);
+      
     });
 
 

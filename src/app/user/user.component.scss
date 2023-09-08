@@ -9,6 +9,11 @@ mat-card-content {
     padding-right: 0px;
 }
 
+.mat-mdc-card-content:last-child {
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
 .user-table {
     width: 100%;
     border-collapse: collapse;
@@ -34,7 +39,7 @@ mat-card-content {
         }
 
         td {
-            height: 48px;
+            height: 50px;
 
             &:first-child {
                 padding-left: 16px;
@@ -53,6 +58,6 @@ mat-card-content {
         font-size: 14px;
         font-weight: 500;
         text-align: start;
-        height: 48px;
+        height: 50px;
     }
 }

@@ -15,17 +15,18 @@ import { Observable } from 'rxjs';
 
 export class UserComponent {
   user = new User();
-  users$: Observable<any[]>; // <-- diese Variable kann real time observiert werden
+  users$: Observable<any[]>;
   firestore: Firestore = inject(Firestore);
   allUsers: User[] = [];
 
   constructor(public dialog: MatDialog) {
 
-    this.users$ = collectionData(collection(this.firestore, 'users'), { idField: 'id' }); // <-- users$ wird mit unsere DB verknüpft und die Daten + id abgerufen
-    this.users$.subscribe((changes: any) => {           // <-- subscribe loggt und jedes mal raus, wenn etwas an der DB geändert wird
+    /**
+     * connects to the 'users' collection in Firestore and listens for real-time updates from that collection
+     */
+    this.users$ = collectionData(collection(this.firestore, 'users'), { idField: 'id' });
+    this.users$.subscribe((changes: any) => {
       this.allUsers = changes;
-      console.log('Alle User', this.allUsers);
-      
     });
 
 
@@ -33,6 +34,9 @@ export class UserComponent {
   }
 
 
+  /**
+   * open mat-card showing DialogAddUserComponent
+   */
   openDialog() {
     this.dialog.open(DialogAddUserComponent);
   }

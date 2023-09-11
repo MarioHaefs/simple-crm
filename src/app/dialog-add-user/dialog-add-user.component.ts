@@ -3,7 +3,6 @@ import { User } from 'src/models/user.class';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Firestore, collectionData } from '@angular/fire/firestore';
 import { collection, addDoc } from 'firebase/firestore';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -24,22 +23,28 @@ export class DialogAddUserComponent {
   }
 
 
+  /**
+   * close dialog window
+   */
   closeDialog() {
     this.dialogRef.close();
   }
 
 
+  /**
+   * save new created user to db
+   */
   saveUser() {
     this.user.birthDate = this.birthDate.getTime();
     this.loading = true;
 
-    let usersCollectionRef = collection(this.firestore, 'users');  // <-- damit legt man eine Sammlung mit dem Namen 'users' in der Firestore Datenbank an
+    let usersCollectionRef = collection(this.firestore, 'users');  // <-- damit legt (bzw greift darauf zu wenn vorhanden) man eine Sammlung mit dem Namen 'users' in der Firestore Datenbank an
     addDoc(usersCollectionRef, this.user.toJSON());   // <-- damit fügt man einen Json Datensatz(siehe user.class.ts) zu dieser Datenbank hinzu
 
     setTimeout(() => {
       this.loading = false;
       this.dialogRef.close();
-    }, 1500);
+    }, 1000);
   }
 
 }

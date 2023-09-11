@@ -6,6 +6,7 @@ import { User } from 'src/models/user.class';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
+import { onSnapshot } from 'firebase/firestore';
 
 
 @Component({
@@ -38,10 +39,10 @@ export class UserDetailComponent {
   getUser() {
     let userDoc = doc(this.firestore, 'users', this.userId);
 
-    getDoc(userDoc).then((docSnapshot) => {
-
-      this.user = docSnapshot.data() as User;
-
+    onSnapshot(userDoc, (docSnapshot) => {         // <-- onSnapshot aktualisiert Daten im Frontend in Echtzeit!
+      if (docSnapshot.exists()) {
+        this.user = new User(docSnapshot.data());
+      }
     });
   }
 
@@ -51,7 +52,8 @@ export class UserDetailComponent {
    */
   editUserDetail() {
     const dialogUser = this.dialog.open(DialogEditUserComponent);
-    dialogUser.componentInstance.user = this.user;
+    dialogUser.componentInstance.user = new User(this.user.toJSON());  // <-- this "new User(this.user.toJSON());" erstellt eine Kopie unseres Nutzers
+    dialogUser.componentInstance.userId = this.userId;
   }
 
 
@@ -60,7 +62,8 @@ export class UserDetailComponent {
    */
   editMenu() {
     const dialogMenu = this.dialog.open(DialogEditAddressComponent);
-    dialogMenu.componentInstance.user = this.user;
+    dialogMenu.componentInstance.user = new User(this.user.toJSON());
+    dialogMenu.componentInstance.userId = this.userId;
   }
 
 }

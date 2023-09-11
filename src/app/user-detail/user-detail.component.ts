@@ -3,7 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Firestore, collectionData } from '@angular/fire/firestore';
 import { collection, addDoc, doc, getDoc } from 'firebase/firestore';
 import { User } from 'src/models/user.class';
-import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
+import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 
 
 @Component({
@@ -18,7 +20,8 @@ export class UserDetailComponent {
   userId = '';
   user: User = new User();
 
-  constructor(private route: ActivatedRoute) {
+  
+  constructor(private route: ActivatedRoute, public dialog: MatDialog) {
 
     this.route.params.subscribe((params) => {    // <-- route und params sind Teil von ActivatedRoute. So kommt man an die ID
       this.userId = params['id'];
@@ -43,13 +46,21 @@ export class UserDetailComponent {
   }
 
 
-  editHeaderMenu() {
-
+  /**
+   * opens DialogEditUserComponent for editing
+   */
+  editUserDetail() {
+    const dialogUser = this.dialog.open(DialogEditUserComponent);
+    dialogUser.componentInstance.user = this.user;
   }
 
 
+  /**
+   * opens DialogEditAddressComponent for editing
+   */
   editMenu() {
-
+    const dialogMenu = this.dialog.open(DialogEditAddressComponent);
+    dialogMenu.componentInstance.user = this.user;
   }
 
 }

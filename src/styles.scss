@@ -1,7 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
 
 .mr-top-32 {
     margin-top: 32px;
@@ -10,3 +19,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .padding-16 {
     padding: 16px;
 }
+
+// manipulate initial text color for filled text fields
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+    color: black !important;
+}
+
+// change the color of the floating label when the field is focused
+.mdc-text-field--focused .mdc-floating-label {
+    color: black !important;
+}
+
+// manipulate text color on hover and focus for the form field
+.mat-mdc-form-field-focus-overlay {
+    color: black !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+

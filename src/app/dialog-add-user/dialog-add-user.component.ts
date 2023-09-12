@@ -19,8 +19,7 @@ export class DialogAddUserComponent {
   loading = false;
 
 
-  constructor(private dialogRef: MatDialogRef<DialogAddUserComponent>) {
-  }
+  constructor(private dialogRef: MatDialogRef<DialogAddUserComponent>) { }
 
 
   /**
@@ -38,13 +37,14 @@ export class DialogAddUserComponent {
     this.user.birthDate = this.birthDate.getTime();
     this.loading = true;
 
-    let usersCollectionRef = collection(this.firestore, 'users');  // <-- damit legt (bzw greift darauf zu wenn vorhanden) man eine Sammlung mit dem Namen 'users' in der Firestore Datenbank an
-    addDoc(usersCollectionRef, this.user.toJSON());   // <-- damit fügt man einen Json Datensatz(siehe user.class.ts) zu dieser Datenbank hinzu
+    let usersCollectionRef = collection(this.firestore, 'users');
+    addDoc(usersCollectionRef, this.user.toJSON());
 
     setTimeout(() => {
       this.loading = false;
       this.dialogRef.close();
     }, 1000);
   }
+
 
 }

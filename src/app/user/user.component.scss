@@ -35,7 +35,8 @@ mat-card-content {
         }
 
         &:hover {
-            background-color: rgba(0,0,0,0.04);
+            background-color: #303032;
+            color: #E67708;
         }
 
         td {
@@ -54,10 +55,18 @@ mat-card-content {
     }
 
     th {
-        color: rgba(0,0,0,0.4);
+        color: #303032;
         font-size: 14px;
         font-weight: 500;
         text-align: start;
         height: 50px;
+    }
+}
+
+.add-button[mat-fab][color="primary"] {
+    background-color: #E67708;
+    &.mat-button-focus-overlay, 
+    &.mat-button-ripple.mat-ripple {
+        background-color: rgba(230, 119, 8, 0.2);
     }
 }

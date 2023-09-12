@@ -13,43 +13,49 @@
 }
 
 .menu-icon {
-    height: 20px;
+    height: 30px;
     margin-right: 32px;
     cursor: pointer;
+    object-fit: cover;
 
     &:hover {
-        opacity: 0.5;
+        opacity: 0.75;
     }
 }
 
 .sidenav {
-    width: 300px;
+    width: 200px;
+    background-color: #303032;
+    color: white;
 }
 
 .logo-container {
-    border-bottom: 1px solid rgba(0,0,0,0.05);
     padding-left: 16px;
     padding-right: 16px;
     height: 64px;
     min-height: 64px;
     display: flex;
     align-items: center;
+    margin-bottom: 75px;
 }
 
 .menu-items {
     list-style-type: none;
     padding: 0px;
     margin: 0px;
+    font-size: 16px;
 
     li {
         padding-left: 16px;
+        padding-right: 16px;
         height: 64px;
         display: flex;
         align-items: center;
         cursor: pointer;
 
         &:hover {
-            background-color: rgba(0,0,0,0.05);
+            background-color: #1a1a1b;
+            color: #E67708;
         }
     }
 
@@ -62,4 +68,10 @@
     padding-top: 16px;
     padding-left: 32px;
     padding-right: 32px;
+}
+
+mat-toolbar[color="primary"] {
+    background-color: white;
+    color: black;
+    box-shadow: -2px 0px 6px 0px rgba(0, 0, 0, 0.2);
 }

@@ -1,25 +1,30 @@
-<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+<form #addressForm="ngForm" (ngSubmit)="saveAddress()">
 
-<h1 mat-dialog-title>Edit Address</h1>
-<div mat-dialog-content>
-    <div>
-        <mat-form-field class="full-width">
-            <mat-label>Address</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.address" matInput>
-        </mat-form-field>
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+    <h1 mat-dialog-title>Edit Address</h1>
+    <div mat-dialog-content>
+
+        <div>
+            <mat-form-field class="full-width">
+                <mat-label>Address</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.address" name="address" matInput required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="margin-right">
+                <mat-label>Zip code</mat-label>
+                <input type="number" [disabled]="loading" [(ngModel)]="user.zipCode" name="zipCode" matInput required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>City</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.city" name="city" matInput required>
+            </mat-form-field>
+        </div>
     </div>
-    <div>
-        <mat-form-field class="margin-right">
-            <mat-label>Zip code</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.zipCode" matInput>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>City</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.city" matInput>
-        </mat-form-field>
+    <div mat-dialog-actions>
+        <button [disabled]="loading" mat-button (click)="closeDialog()">Cancel</button>
+        <button [disabled]="loading || !addressForm.valid" type="submit" mat-button>Save</button>
     </div>
-</div>
-<div mat-dialog-actions>
-    <button [disabled]="loading" mat-button (click)="closeDialog()">Cancel</button>
-    <button [disabled]="loading" mat-button (click)="saveAddress()">Save</button>
-</div>
+
+</form>

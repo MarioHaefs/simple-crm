@@ -23,6 +23,11 @@
     }
 }
 
+.top-headline {
+    font-size: 24px;
+    font-weight: 500;
+}
+
 .sidenav {
     width: 200px;
     background-color: #303032;
@@ -74,4 +79,35 @@ mat-toolbar[color="primary"] {
     background-color: white;
     color: black;
     box-shadow: -2px 0px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+.profil-img {
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.help-icon {
+    cursor: pointer;
+    height: 20px;
+    margin-right: 16px;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+mat-toolbar-row {
+    justify-content: space-between;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
 }

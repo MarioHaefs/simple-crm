@@ -1,7 +1,7 @@
 <mat-drawer-container class="drawer-container" autosize>
   <mat-drawer #drawer class="sidenav" [opened]="true" mode="side">
     <div class="logo-container">
-      <img class="logo" src="/assets/img/logo.png"> 
+      <img class="logo" src="/assets/img/logo.png">
       <span class="logo-text">CRM</span>
     </div>
 
@@ -14,8 +14,14 @@
   <div>
     <mat-toolbar color="primary">
       <mat-toolbar-row>
-        <img class="menu-icon" src="/assets/img/menu1.png" (click)="drawer.toggle()">
-        <span>Dashboard</span>
+        <div class="align-center">
+          <img class="menu-icon" src="/assets/img/menu1.png" (click)="drawer.toggle()">
+          <span class="top-headline">Dashboard</span>
+        </div>
+        <div class="align-center">
+          <img class="help-icon" src="/assets/img/help-icon.png">
+          <img class="profil-img" src="/assets/img/profil-img.png">
+        </div>
       </mat-toolbar-row>
     </mat-toolbar>
 

@@ -1,12 +1,16 @@
 .add-button {
     position: absolute;
-    bottom: 64px;
-    right: 64px;
+    bottom: 32px;
+    right: 32px;
 }
 
 mat-card-content {
     padding-left: 0px;
     padding-right: 0px;
+}
+
+mat-card {
+    font-weight: 600;
 }
 
 .mat-mdc-card-content:last-child {
@@ -19,7 +23,7 @@ mat-card-content {
     border-collapse: collapse;
 
     tr {
-        border-bottom: 1px solid rgba(0,0,0,0.4);
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.1);
         cursor: pointer;
 
         &:first-child {

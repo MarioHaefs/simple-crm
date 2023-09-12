@@ -14,7 +14,6 @@ import { collection, addDoc } from 'firebase/firestore';
 
 export class DialogAddUserComponent {
   user = new User();
-  birthDate!: Date;
   firestore: Firestore = inject(Firestore);
   loading = false;
 
@@ -34,7 +33,6 @@ export class DialogAddUserComponent {
    * save new created user to db
    */
   saveUser() {
-    this.user.birthDate = this.birthDate.getTime();
     this.loading = true;
 
     let usersCollectionRef = collection(this.firestore, 'users');
@@ -45,6 +43,5 @@ export class DialogAddUserComponent {
       this.dialogRef.close();
     }, 1000);
   }
-
 
 }

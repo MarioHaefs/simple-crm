@@ -20,6 +20,14 @@ body {
     padding: 16px;
 }
 
+.full-width {
+    width: 100%;
+}
+
+.margin-right {
+    margin-right: 16px;
+}
+
 // manipulate initial text color for filled text fields
 .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
     color: black !important;

@@ -4,9 +4,13 @@
         <button [matMenuTriggerFor]="headerMenu" class="vert-icon" mat-icon-button>
             <mat-icon>more_vert</mat-icon>
         </button>
+        <button routerLink="/user" class="arrow-back" mat-icon-button>
+            <mat-icon fontIcon="arrow_back"></mat-icon>
+        </button>
 
         <mat-menu #headerMenu="matMenu">
             <button mat-menu-item (click)="editUserDetail()">Edit</button>
+            <button mat-menu-item (click)="deleteUser()">Delete</button>
         </mat-menu>
 
         <img class="profile-img" src="/assets/img/profile.png">
@@ -19,7 +23,7 @@
 </mat-card>
 
 <mat-card class="mr-top-32">
-    <button [matMenuTriggerFor]="addressMenu" class="vert-icon" mat-icon-button>
+    <button [matMenuTriggerFor]="addressMenu" class="vert-icon-white" mat-icon-button>
         <mat-icon>more_vert</mat-icon>
     </button>
 
@@ -31,5 +35,9 @@
     <mat-card-content>
         {{ user.address }} <br>
         {{ user.zipCode }} {{ user.city }}
+    </mat-card-content>
+    <mat-card-title class="padding-16">Phone</mat-card-title>
+    <mat-card-content>
+        {{ user.phone }}
     </mat-card-content>
 </mat-card>

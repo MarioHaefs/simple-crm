@@ -1,12 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Firestore, collectionData } from '@angular/fire/firestore';
-import { collection, addDoc, doc, getDoc } from 'firebase/firestore';
+import { collection, addDoc, doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { User } from 'src/models/user.class';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 import { onSnapshot } from 'firebase/firestore';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -21,8 +23,8 @@ export class UserDetailComponent {
   userId = '';
   user: User = new User();
 
-  
-  constructor(private route: ActivatedRoute, public dialog: MatDialog) {
+
+  constructor(private route: ActivatedRoute, public dialog: MatDialog, private router: Router) {
 
     this.route.params.subscribe((params) => {    // <-- route und params sind Teil von ActivatedRoute. So kommt man an die ID
       this.userId = params['id'];
@@ -65,5 +67,13 @@ export class UserDetailComponent {
     dialogMenu.componentInstance.user = new User(this.user.toJSON());
     dialogMenu.componentInstance.userId = this.userId;
   }
+
+
+  async deleteUser() {
+    const userDocRef = doc(this.firestore, 'users', this.userId);
+    await deleteDoc(userDocRef);
+    this.router.navigate(['/user']);
+  }
+
 
 }

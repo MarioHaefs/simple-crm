@@ -28,6 +28,10 @@ body {
     margin-right: 16px;
 }
 
+.margin-bot-64 {
+    margin-bottom: 64px;
+}
+
 // manipulate initial text color for filled text fields
 .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
     color: black !important;

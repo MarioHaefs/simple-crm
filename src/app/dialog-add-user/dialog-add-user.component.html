@@ -15,15 +15,19 @@
                 <input [disabled]="loading" [(ngModel)]="user.lastName" name="lastName" matInput required>
             </mat-form-field>
         </div>
-        <div>
+        <div>   
             <mat-form-field class="full-width">
-                <mat-label>E-Mail</mat-label>
+                <mat-label>E-Mail</mat-label >
                 <input type="email" [disabled]="loading" [(ngModel)]="user.email" #emailField="ngModel" name="email" matInput required>
             </mat-form-field>            
         </div>
         <div>
-            <mat-form-field class="full-width">
-                <mat-label>Phone</mat-label>
+            <mat-form-field class="margin-right">
+                <mat-label>Job title</mat-label>
+                <input type="text" [disabled]="loading" [(ngModel)]="user.job" name="jobTitle" matInput required>
+            </mat-form-field>  
+            <mat-form-field>
+                <mat-label>Phone number</mat-label>
                 <input type="tel" [disabled]="loading" [(ngModel)]="user.phone" name="phone" matInput required>
             </mat-form-field>
         </div>
@@ -45,7 +49,7 @@
         </div>
     </div>
     <div mat-dialog-actions>
-        <button [disabled]="loading" mat-button (click)="closeDialog()">Cancel</button>
+        <button type="button" [disabled]="loading" mat-button (click)="closeDialog()">Cancel</button>
         <button [disabled]="loading || !userForm.valid" type="submit" mat-button>Save</button>
     </div>
 

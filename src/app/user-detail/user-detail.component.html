@@ -1,43 +1,39 @@
-<mat-card class="user-detail-header">
+<div class="component-box">
+    <mat-card class="user-detail-header">
+        <img class="logo" src="/assets/img/logo.png">
+        <div class="content-box">
+            <button [matMenuTriggerFor]="headerMenu" class="vert-icon" mat-icon-button>
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <button routerLink="/user" class="arrow-back" mat-icon-button>
+                <mat-icon fontIcon="arrow_back"></mat-icon>
+            </button>
 
-    <div class="header-box">
-        <button [matMenuTriggerFor]="headerMenu" class="vert-icon" mat-icon-button>
-            <mat-icon>more_vert</mat-icon>
-        </button>
-        <button routerLink="/user" class="arrow-back" mat-icon-button>
-            <mat-icon fontIcon="arrow_back"></mat-icon>
-        </button>
+            <mat-menu #headerMenu="matMenu">
+                <button mat-menu-item (click)="editUserDetail()">Edit</button>
+                <button mat-menu-item (click)="deleteUser()">Delete</button>
+            </mat-menu>
 
-        <mat-menu #headerMenu="matMenu">
-            <button mat-menu-item (click)="editUserDetail()">Edit</button>
-            <button mat-menu-item (click)="deleteUser()">Delete</button>
-        </mat-menu>
+            <img class="profile-img" src="/assets/img/profile.png">
 
-        <img class="profile-img" src="/assets/img/profile.png">
-
-        <div class="margin-left">
             <h2>{{ user.firstName }} {{ user.lastName }}</h2>
-            {{ user.email }}
+            <h3>{{ user.job }}</h3>
+
+            <mat-card-content>
+                <mat-icon>mail</mat-icon>
+                <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+            </mat-card-content>
+
+            <mat-card-content>
+                <mat-icon>place</mat-icon>
+                {{ user.address }} <br>
+                {{ user.zipCode }} {{ user.city }}
+            </mat-card-content>
+
+            <mat-card-content>
+                <mat-icon>phone</mat-icon>
+                <a href="tel:{{ user.phone }}">{{ user.phone }}</a>
+            </mat-card-content>
         </div>
-    </div>
-</mat-card>
-
-<mat-card class="mr-top-32">
-    <button [matMenuTriggerFor]="addressMenu" class="vert-icon-white" mat-icon-button>
-        <mat-icon>more_vert</mat-icon>
-    </button>
-
-    <mat-menu #addressMenu="matMenu">
-        <button mat-menu-item (click)="editMenu()">Edit</button>
-    </mat-menu>
-
-    <mat-card-title class="padding-16">Address</mat-card-title>
-    <mat-card-content>
-        {{ user.address }} <br>
-        {{ user.zipCode }} {{ user.city }}
-    </mat-card-content>
-    <mat-card-title class="padding-16">Phone</mat-card-title>
-    <mat-card-content>
-        {{ user.phone }}
-    </mat-card-content>
-</mat-card>
+    </mat-card>
+</div>

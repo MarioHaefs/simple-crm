@@ -32,6 +32,7 @@ import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { NgChartsModule } from 'ng2-charts';
 import { NewsComponent } from './news/news.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -72,7 +73,8 @@ import { CalendarComponent } from './calendar/calendar.component';
     MatProgressBarModule,
     MatCardModule,
     MatMenuModule,
-    NgChartsModule
+    NgChartsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

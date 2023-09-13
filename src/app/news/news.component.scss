@@ -1,0 +1,38 @@
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.news-content {
+    justify-content: space-between;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+.news-card {
+    transition: transform 0.3s;
+    border-radius: 30px;
+    height: 400px;
+    width: 400px;
+    background-color: #303032;
+
+    &:hover {
+        transform: scale(1.01);
+        cursor: pointer;
+    }
+
+    img {
+        object-fit: cover;
+        height: 400px;
+        width: 400px;
+    }
+
+    h2 {
+        color: #E67708;
+        line-height: 25px;
+        margin-top: 8px;
+    }
+}

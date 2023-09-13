@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { collection, addDoc, doc, getDoc, deleteDoc, onSnapshot } from 'firebase/firestore';
 import { User } from 'src/models/user.class';
+import { ChartType, ChartOptions, ChartData } from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -38,5 +39,28 @@ export class DashboardComponent {
       }
     });
   }
+
+
+  public pieChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  public pieChartLabels: string[] = ['Verkäufe', 'Rücksendungen', 'Fragen'];
+  public pieChartData: ChartData<'pie'> = {
+    datasets: [{
+      data: [300, 50, 100],
+      label: 'Kuchenchart'
+    }]
+  };
+  public pieChartType: ChartType = 'pie';
+
+
+  public lineChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  public lineChartLabels: string[] = ['Januar', 'Februar', 'März', 'April', 'Mai'];
+  public lineChartData: { data: number[], label: string }[] = [
+    { data: [65, 59, 80, 81, 56], label: 'Bestellungen' }
+  ];
+  public lineChartType: ChartType = 'line';
 
 }

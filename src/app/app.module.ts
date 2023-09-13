@@ -29,6 +29,7 @@ import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-ad
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { InfoComponent } from './info/info.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -66,7 +67,8 @@ import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
     provideFirestore(() => getFirestore()),
     MatProgressBarModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

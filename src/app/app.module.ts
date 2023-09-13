@@ -30,6 +30,8 @@ import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.com
 import { InfoComponent } from './info/info.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { NgChartsModule } from 'ng2-charts';
+import { NewsComponent } from './news/news.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 
@@ -45,7 +47,9 @@ import { NgChartsModule } from 'ng2-charts';
     DialogEditAddressComponent,
     DialogEditUserComponent,
     InfoComponent,
-    LegalNoticeComponent
+    LegalNoticeComponent,
+    NewsComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,

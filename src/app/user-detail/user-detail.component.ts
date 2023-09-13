@@ -69,6 +69,9 @@ export class UserDetailComponent {
   }
 
 
+  /**
+   * delete user in db
+   */
   async deleteUser() {
     const userDocRef = doc(this.firestore, 'users', this.userId);
     await deleteDoc(userDocRef);

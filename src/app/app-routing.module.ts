@@ -5,6 +5,8 @@ import { UserComponent } from './user/user.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { InfoComponent } from './info/info.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
+import { NewsComponent } from './news/news.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent },
@@ -13,6 +15,8 @@ const routes: Routes = [
   {path: 'user/:id', component: UserDetailComponent },
   {path: 'info', component: InfoComponent },
   {path: 'legal-notice', component: LegalNoticeComponent },
+  {path: 'news', component: NewsComponent },
+  {path: 'calendar', component: CalendarComponent },
 ];
 
 @NgModule({

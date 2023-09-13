@@ -1,17 +1,16 @@
 <div class="dashboard-content">
+    <mat-card [routerLink]="'/user'" class="guidelines-card clickable">
+        <div class="direction">
+            <span>Total Customers</span>
+            <span class="customer-amount">{{userCount}}</span>
+        </div>
+    </mat-card>
+    
     <mat-card class="guidelines-card">
         <div class="direction">
             <span>Focus On</span>
             <span>Decision Making</span>
             <img src="/assets/img/decision-icon.png">
-        </div>
-    </mat-card>
-
-    <mat-card>
-        <div class="pie-chart">
-            <canvas baseChart [options]="pieChartOptions" [labels]="pieChartLabels" [data]="pieChartData"
-                [type]="pieChartType">
-            </canvas>
         </div>
     </mat-card>
 
@@ -23,19 +22,52 @@
         </div>
     </mat-card>
 
-    <mat-card [routerLink]="'/user'" class="guidelines-card clickable">
-        <div class="direction">
-            <span>Total Customers</span>
-            <span class="customer-amount">5</span>
+    <mat-card class="chart-colors">
+        <div class="chart-headline">
+            <mat-icon>attach_money</mat-icon>
+            <span>Revenue Sources</span>
+        </div>
+        <div class="pie-chart">
+            <canvas baseChart [options]="pieChartOptions" [data]="pieChartDataRevenue"
+                [type]="pieChartType">
+            </canvas>
+        </div>
+    </mat-card>
+
+    <mat-card class="chart-colors">
+        <div class="chart-headline">
+            <mat-icon>analytics</mat-icon>
+            <span>Cost Structures</span>
+        </div>
+        <div class="pie-chart">
+            <canvas baseChart [options]="pieChartOptions" [data]="pieChartDataCosts"
+                [type]="pieChartType">
+            </canvas>
+        </div>
+    </mat-card>
+
+    <mat-card class="chart-colors">
+        <div class="chart-headline">
+            <mat-icon>payments</mat-icon>
+            <span>Investments</span>
+        </div>
+        <div class="pie-chart">
+            <canvas baseChart [options]="pieChartOptions" [data]="pieChartDataInvestments"
+                [type]="pieChartType">
+            </canvas>
+        </div>
+    </mat-card>
+
+    <mat-card class="line-chart-container chart-colors">
+        <div class="chart-headline">
+            <mat-icon>monetization_on</mat-icon>
+            <span>Monthly Cash Flow</span>
+        </div>
+        <div class="line-chart">
+            <canvas baseChart [options]="lineChartOptions" [labels]="lineChartLabels" [datasets]="lineChartData"
+                [type]="lineChartType">
+            </canvas>
         </div>
     </mat-card>
 
 </div>
-
-<mat-card>
-    <div class="line-chart">
-        <canvas baseChart [options]="lineChartOptions" [labels]="lineChartLabels" [datasets]="lineChartData"
-            [type]="lineChartType">
-        </canvas>
-    </div>
-</mat-card>

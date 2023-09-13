@@ -9,15 +9,19 @@
 }
 
 .line-chart {
-    width: 100%;
-    padding: 16px;
-    height: 400px;
+    padding: 8px;
+}
+
+.line-chart-container {
+    width: 62vw;
+    display: inline-block;
 }
 
 mat-card {
     border-radius: 30px;
-    margin: 16px;
+    margin: 10px;
     display: inline-block;
+    box-shadow: -2px 0px 6px 0px rgba(0, 0, 0, 0.2) !important;
 }
 
 .guidelines-card {
@@ -28,6 +32,11 @@ mat-card {
     font-weight: bold;
     background-color: #303032;
     color: #E67708;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(1.05);
+    }
 }
 
 .direction {
@@ -52,10 +61,22 @@ mat-card {
 
 .clickable {
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+}
 
-    &:hover {
-        transform: scale(1.05);
+.chart-colors {
+    background-color: #303032;
+    color: white;
+}
+
+.chart-headline {
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+    margin-top: 16px;
+    font-size: 20px;
+
+    span {
+        margin-left: 8px;
     }
 }
 

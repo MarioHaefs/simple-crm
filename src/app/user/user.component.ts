@@ -18,6 +18,7 @@ export class UserComponent {
   users$: Observable<any[]>;
   firestore: Firestore = inject(Firestore);
   allUsers: User[] = [];
+  filteredUsers: User[] = [];
 
   constructor(public dialog: MatDialog) {
 
@@ -27,10 +28,16 @@ export class UserComponent {
     this.users$ = collectionData(collection(this.firestore, 'users'), { idField: 'id' });
     this.users$.subscribe((changes: any) => {
       this.allUsers = changes;
+      this.filteredUsers = this.allUsers;
     });
 
+  }
 
 
+  applyFilter(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    const filterValue = inputElement.value.toLowerCase();
+    this.filteredUsers = this.allUsers.filter(user => user.firstName.toLowerCase().includes(filterValue));
   }
 
 

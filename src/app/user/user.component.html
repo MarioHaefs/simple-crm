@@ -1,5 +1,8 @@
 <mat-card>
     <mat-card-content>
+        <mat-form-field class="search-field">
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search by first name">
+        </mat-form-field>
         <table class="user-table">
             <tr>
                 <th>Name</th>
@@ -7,7 +10,7 @@
                 <th>Position</th>
                 <th>City</th>
             </tr>
-            <tr *ngFor="let user of allUsers" [routerLink]="['/user/' + user.id]">
+            <tr *ngFor="let user of filteredUsers" [routerLink]="['/user/' + user.id]">
                 <td>{{ user.firstName }} {{ user.lastName }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.job }}</td>

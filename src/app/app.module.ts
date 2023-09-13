@@ -28,6 +28,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { InfoComponent } from './info/info.component';
+import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 
 
 
@@ -42,7 +43,8 @@ import { InfoComponent } from './info/info.component';
     UserDetailComponent,
     DialogEditAddressComponent,
     DialogEditUserComponent,
-    InfoComponent
+    InfoComponent,
+    LegalNoticeComponent
   ],
   imports: [
     BrowserModule,

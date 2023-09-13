@@ -1,10 +1,41 @@
-<div style="display: inline-block; width: 45%; margin-right: 5%;">
-    <canvas baseChart [options]="pieChartOptions" [labels]="pieChartLabels" [data]="pieChartData" [type]="pieChartType">
-    </canvas>
+<div class="dashboard-content">
+    <mat-card class="guidelines-card">
+        <div class="direction">
+            <span>Focus On</span>
+            <span>Decision Making</span>
+            <img src="/assets/img/decision-icon.png">
+        </div>
+    </mat-card>
+
+    <mat-card>
+        <div class="pie-chart">
+            <canvas baseChart [options]="pieChartOptions" [labels]="pieChartLabels" [data]="pieChartData"
+                [type]="pieChartType">
+            </canvas>
+        </div>
+    </mat-card>
+
+    <mat-card class="guidelines-card">
+        <div class="direction">
+            <span>Prioritize & Share</span>
+            <span>Team Goals</span>
+            <img src="/assets/img/teamwork-icon.png">
+        </div>
+    </mat-card>
+
+    <mat-card [routerLink]="'/user'" class="guidelines-card clickable">
+        <div class="direction">
+            <span>Total Customers</span>
+            <span class="customer-amount">5</span>
+        </div>
+    </mat-card>
+
 </div>
 
-<div style="display: inline-block; width: 45%;">
-    <canvas baseChart [options]="lineChartOptions" [labels]="lineChartLabels" [datasets]="lineChartData"
-        [type]="lineChartType">
-    </canvas>
-</div>
+<mat-card>
+    <div class="line-chart">
+        <canvas baseChart [options]="lineChartOptions" [labels]="lineChartLabels" [datasets]="lineChartData"
+            [type]="lineChartType">
+        </canvas>
+    </div>
+</mat-card>

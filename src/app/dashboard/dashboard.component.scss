@@ -1,0 +1,61 @@
+.dashboard-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pie-chart {
+    height: 200px;
+    padding: 16px;
+}
+
+.line-chart {
+    width: 100%;
+    padding: 16px;
+    height: 400px;
+}
+
+mat-card {
+    border-radius: 30px;
+    margin: 16px;
+    display: inline-block;
+}
+
+.guidelines-card {
+    padding: 32px;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #303032;
+    color: #E67708;
+}
+
+.direction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    img {
+        width: 100px;
+    }
+
+    span {
+        margin-bottom: 16px;
+    }
+}
+
+.customer-amount {
+    margin-top: 32px;
+    font-size: 42px;
+}
+
+.clickable {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+

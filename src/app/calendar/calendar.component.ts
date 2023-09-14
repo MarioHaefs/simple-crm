@@ -26,6 +26,9 @@ export class CalendarComponent {
   appointments$: Observable<any[]>;
   appointments: any[] = [];
   selectedUser: User | null = null;
+  timeOptions: string[] = [];
+  selectedTime: string | null = null;
+
 
 
   constructor() {
@@ -44,6 +47,14 @@ export class CalendarComponent {
       });
       this.calendarOptions.events = this.appointments;
     });
+
+
+    for (let hour = 8; hour <= 18; hour++) {
+      for (let minute of [0, 30]) {
+        const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+        this.timeOptions.push(timeString);
+      }
+    }
   }
 
 
@@ -62,6 +73,13 @@ export class CalendarComponent {
     validRange: {
       start: new Date()
     },
+    weekends: false,
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: ''
+    },
+
   };
 
 
@@ -86,15 +104,17 @@ export class CalendarComponent {
 
 
   saveMeeting() {
-    if (this.selectedUser && this.selectedDate) {
+    if (this.selectedUser && this.selectedDate && this.selectedTime) {
       this.addEventToFirebase({
-        date: new Date(`${this.selectedDate.toISOString().split('T')[0]}T12:00:00`),
+        date: new Date(`${this.selectedDate.toISOString().split('T')[0]}T${this.selectedTime}:00`),
         selectedUser: this.selectedUser
       });
       this.selectedDate = null;
       this.selectedUser = null;
+      this.selectedTime = null;
     }
   }
+
 
 
   closeCard() {

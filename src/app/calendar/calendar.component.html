@@ -17,14 +17,14 @@
       </mat-select>
     </mat-form-field>
 
-    <!-- <p>Select a time:</p>
+    <p>Select a time:</p>
     <mat-form-field>
-      <mat-select placeholder="Select time">
-        <mat-option>
-          10:00 
+      <mat-select placeholder="Select time" [(value)]="selectedTime">
+        <mat-option *ngFor="let time of timeOptions" [value]="time">
+          {{time}}
         </mat-option>
       </mat-select>
-    </mat-form-field> -->
+    </mat-form-field>
 
     <mat-card-actions>
       <button type="button" mat-button (click)="closeCard()">Cancel</button>

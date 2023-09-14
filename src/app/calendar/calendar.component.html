@@ -8,16 +8,18 @@
   </mat-card-header>
 
   <mat-card-content>
-    <p>Select a user for the meeting:</p>
     <mat-form-field>
-      <mat-select placeholder="Choose a user" [(value)]="selectedUser">
+      <input matInput placeholder="Topic" [(ngModel)]="meetingTopic" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Choose a customer" [(value)]="selectedUser">
         <mat-option *ngFor="let user of allUsers" [value]="user">
           {{ user.firstName }} {{ user.lastName }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <p>Select a time:</p>
     <mat-form-field>
       <mat-select placeholder="Select time" [(value)]="selectedTime">
         <mat-option *ngFor="let time of timeOptions" [value]="time">
@@ -28,7 +30,7 @@
 
     <mat-card-actions>
       <button type="button" mat-button (click)="closeCard()">Cancel</button>
-      <button type="submit" mat-button (click)="saveMeeting()">Save</button>
+      <button type="submit" mat-button [disabled]="!meetingTopic.trim()" (click)="saveMeeting()">Save</button>
     </mat-card-actions>
   </mat-card-content>
 </mat-card>

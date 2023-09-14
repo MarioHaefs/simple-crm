@@ -28,7 +28,7 @@ export class CalendarComponent {
   selectedUser: User | null = null;
   timeOptions: string[] = [];
   selectedTime: string | null = null;
-
+  meetingTopic: string = '';
 
 
   constructor() {
@@ -41,7 +41,7 @@ export class CalendarComponent {
     this.appointments$.subscribe((changes: any[]) => {
       this.appointments = changes.map((appointment: any) => {
         return {
-          title: appointment.userName,
+          title: `${appointment.userName} - ${appointment.topic}`,
           start: appointment.date
         };
       });
@@ -88,32 +88,36 @@ export class CalendarComponent {
   }
 
 
-  async addEventToFirebase(result: any) {
-    const { date, selectedUser } = result;
-    try {
-      await addDoc(collection(this.firestore, 'appointments'), {
-        date: date.toISOString(),
-        userId: selectedUser.id,
-        userName: `${selectedUser.firstName} ${selectedUser.lastName}`
-      });
-      console.log('Appointment added successfully');
-    } catch (error) {
-      console.error("Error adding appointment: ", error);
-    }
+  async addAppointmentToBackend(result: any) {
+    const { date, selectedUser, topic } = result;
+
+    await addDoc(collection(this.firestore, 'appointments'), {
+      date: date.toISOString(),
+      userId: selectedUser.id,
+      userName: `${selectedUser.firstName} ${selectedUser.lastName}`,
+      topic: topic
+    });
   }
 
 
+
   saveMeeting() {
-    if (this.selectedUser && this.selectedDate && this.selectedTime) {
-      this.addEventToFirebase({
-        date: new Date(`${this.selectedDate.toISOString().split('T')[0]}T${this.selectedTime}:00`),
-        selectedUser: this.selectedUser
+    if (this.selectedUser && this.selectedDate && this.selectedTime && this.meetingTopic.trim()) {
+      
+      let adjustedDate = new Date(Date.UTC(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate()));
+  
+      this.addAppointmentToBackend({
+        date: new Date(`${adjustedDate.toISOString().split('T')[0]}T${this.selectedTime}:00`),
+        selectedUser: this.selectedUser,
+        topic: this.meetingTopic
       });
       this.selectedDate = null;
       this.selectedUser = null;
       this.selectedTime = null;
+      this.meetingTopic = '';
     }
   }
+  
 
 
 

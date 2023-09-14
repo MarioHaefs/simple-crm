@@ -1,1 +1,34 @@
-<p>calendar works!</p>
+<div (click)="closeCard()" *ngIf="selectedDate" class="overlay"></div>
+
+<full-calendar [options]="calendarOptions"></full-calendar>
+
+<mat-card *ngIf="selectedDate" class="meeting-card">
+  <mat-card-header>
+    <mat-card-title>Meeting for {{ selectedDate | date }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>Select a user for the meeting:</p>
+    <mat-form-field>
+      <mat-select placeholder="Choose a user" [(value)]="selectedUser">
+        <mat-option *ngFor="let user of allUsers" [value]="user">
+          {{ user.firstName }} {{ user.lastName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- <p>Select a time:</p>
+    <mat-form-field>
+      <mat-select placeholder="Select time">
+        <mat-option>
+          10:00 
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+    <mat-card-actions>
+      <button type="button" mat-button (click)="closeCard()">Cancel</button>
+      <button type="submit" mat-button (click)="saveMeeting()">Save</button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>

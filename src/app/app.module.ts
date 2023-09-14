@@ -33,6 +33,10 @@ import { NgChartsModule } from 'ng2-charts';
 import { NewsComponent } from './news/news.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
+
 
 
 
@@ -74,7 +78,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatMenuModule,
     NgChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    FullCalendarModule,
+    MatListModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

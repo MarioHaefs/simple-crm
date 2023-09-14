@@ -1,0 +1,50 @@
+.meeting-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 300px;
+  border-radius: 10px;
+}
+
+
+@keyframes slide-in-blurred-right {
+  0% {
+    transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+    transform-origin: 0% 50%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  100% {
+    transform: translateX(0) scaleY(1) scaleX(1);
+    transform-origin: 50% 50%;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  animation: slide-in-blurred-right 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+}
+
+::ng-deep .fc-daygrid-day:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.03); // Dies macht das Hintergrundfeld ein wenig dunkler beim Darüberfahren
+}
+
+mat-list-item {
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+}

@@ -51,6 +51,7 @@
         align-items: center;
         cursor: pointer;
 
+        &.active-route,
         &:hover {
             background-color: #1a1a1b;
             color: #E67708;
@@ -78,6 +79,7 @@ mat-toolbar[color="primary"] {
     height: 40px;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+
     &:hover {
         transform: scale(1.1);
     }

@@ -1,15 +1,15 @@
 <mat-drawer-container class="drawer-container" autosize>
   <mat-drawer #drawer class="sidenav" [opened]="true" mode="side">
     <div class="logo-container">
-      <img [routerLink]="'/'" class="logo" src="/assets/img/logo.png">
+      <img [routerLink]="'/dashboard'" routerLinkActive="active-route" class="logo" src="/assets/img/logo.png">
     </div>
 
     <ul class="menu-items">
-      <li [routerLink]="'/'"><mat-icon>dashboard</mat-icon>Dashboard</li>
-      <li [routerLink]="'/user'"><mat-icon>person</mat-icon>Customers</li>
-      <li [routerLink]="'/news'"><mat-icon>feed</mat-icon>News</li>
-      <li [routerLink]="'/calendar'"><mat-icon>calendar_month</mat-icon>Calendar</li>
-      <li [routerLink]="'/legal-notice'"><mat-icon>info</mat-icon>Legal notice</li>
+      <li [routerLink]="'/dashboard'" routerLinkActive="active-route"><mat-icon>dashboard</mat-icon>Dashboard</li>
+      <li [routerLink]="'/user'" routerLinkActive="active-route"><mat-icon>person</mat-icon>Customers</li>
+      <li [routerLink]="'/news'" routerLinkActive="active-route"><mat-icon>feed</mat-icon>News</li>
+      <li [routerLink]="'/calendar'" routerLinkActive="active-route"><mat-icon>calendar_month</mat-icon>Calendar</li>
+      <li [routerLink]="'/legal-notice'" routerLinkActive="active-route"><mat-icon>info</mat-icon>Legal notice</li>
     </ul>
   </mat-drawer>
 
@@ -18,7 +18,7 @@
       <mat-toolbar-row>
         <div class="align-center">
           <img class="menu-icon" src="/assets/img/menu1.png" (click)="drawer.toggle()">
-          <span class="top-headline">Dashboard</span>
+          <span class="top-headline">Simple-CRM</span>
         </div>
         <div class="align-center">
           <img [routerLink]="'/info'" class="help-icon" src="/assets/img/help-icon.png">

@@ -14,14 +14,6 @@
         </div>
     </mat-card>
 
-    <mat-card class="guidelines-card">
-        <div class="direction">
-            <span>Prioritize & Share</span>
-            <span>Team Goals</span>
-            <img src="/assets/img/teamwork-icon.png">
-        </div>
-    </mat-card>
-
     <mat-card class="chart-colors">
         <div class="chart-headline">
             <mat-icon>attach_money</mat-icon>
@@ -58,16 +50,25 @@
         </div>
     </mat-card>
 
-    <mat-card class="line-chart-container chart-colors">
-        <div class="chart-headline">
-            <mat-icon>monetization_on</mat-icon>
-            <span>Monthly Cash Flow</span>
-        </div>
-        <div class="line-chart">
-            <canvas baseChart [options]="lineChartOptions" [labels]="lineChartLabels" [datasets]="lineChartData"
-                [type]="lineChartType">
-            </canvas>
+    <mat-card class="guidelines-card">
+        <div class="direction">
+            <span>Prioritize & Share</span>
+            <span>Team Goals</span>
+            <img src="/assets/img/teamwork-icon.png">
         </div>
     </mat-card>
 
 </div>
+
+
+<mat-card class="line-chart-container chart-colors">
+    <div class="chart-headline">
+        <mat-icon>monetization_on</mat-icon>
+        <span>Monthly Cash Flow</span>
+    </div>
+    <div class="line-chart">
+        <canvas baseChart [options]="lineChartOptions" [labels]="lineChartLabels" [datasets]="lineChartData"
+            [type]="lineChartType">
+        </canvas>
+    </div>
+</mat-card>

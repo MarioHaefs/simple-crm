@@ -39,10 +39,6 @@ mat-card {
     background-color: #303032;
     color: #E67708;
     transition: transform 0.3s ease-in-out;
-
-    &:hover {
-        transform: scale(1.05);
-    }
 }
 
 .direction {
@@ -53,6 +49,7 @@ mat-card {
 
     img {
         width: 100px;
+        margin-top: 10px;
     }
 
     span {
@@ -67,6 +64,10 @@ mat-card {
 
 .clickable {
     cursor: pointer;
+
+    &:hover {
+        transform: scale(1.05);
+    }
 }
 
 .chart-colors {

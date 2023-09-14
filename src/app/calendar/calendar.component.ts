@@ -43,7 +43,8 @@ export class CalendarComponent {
       this.appointments = changes.map((appointment: any) => {
         return {
           title: `${appointment.topic} | ${appointment.userName}`,
-          start: appointment.date
+          start: appointment.date,
+          id: appointment.id
         };
       });
       this.calendarOptions.events = this.appointments;
@@ -82,7 +83,26 @@ export class CalendarComponent {
       right: ''
     },
     eventClick: this.handleEventClick.bind(this),
+    eventContent: this.renderEventContent.bind(this)
   };
+
+  renderEventContent(eventInfo: any): any {
+    let formattedTime = '';
+    if (eventInfo.event.start) {
+      const eventStart = eventInfo.event.start;
+      formattedTime = `${eventStart.getHours().toString().padStart(2, '0')}:${eventStart.getMinutes().toString().padStart(2, '0')}`;
+    }
+
+    return {
+      html: `
+        <div class="meeting-template">
+          <span>${formattedTime}</span>
+          <span><b>${eventInfo.event.title}</b></span>
+          <i class="material-icons delete-icon" style="cursor: pointer;">delete</i>
+        </div>
+      `
+    };
+  }
 
 
   handleDateClick(arg: MyDateClickArg) {
@@ -91,9 +111,14 @@ export class CalendarComponent {
 
 
   async handleEventClick(arg: any) {
-    const appointmentId = arg.event.id;
-    await this.deleteAppointmentFromBackend(appointmentId);
+    if (arg.jsEvent.target.classList.contains('delete-icon')) {
+      const appointmentId = arg.event.id;
+      
+      await this.deleteAppointmentFromBackend(appointmentId);
+      arg.event.remove();
+    }
   }
+
 
 
 

@@ -53,5 +53,18 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+.meeting-template {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-
+    i {
+        margin-top: 8px;
+        color: #E67708;
+        background-color: #303032;
+        border-radius: 100%;
+        padding: 5px;
+        font-size: 16px;
+    }
+}

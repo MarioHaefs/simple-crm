@@ -52,3 +52,13 @@ mat-list-item {
 mat-card-title {
   margin-bottom: 16px;
 }
+
+::ng-deep .fc-daygrid-event-dot {
+  display: none;
+}
+
+::ng-deep .fc-event {
+  display: flex;
+  flex-direction: column;
+}
+

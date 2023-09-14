@@ -9,7 +9,11 @@
 
   <mat-card-content>
     <mat-form-field>
-      <input matInput placeholder="Topic" [(ngModel)]="meetingTopic" required>
+      <mat-select placeholder="Topic" [(value)]="meetingTopic">
+        <mat-option *ngFor="let topic of meetingTopics" [value]="topic">
+          {{ topic }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field>

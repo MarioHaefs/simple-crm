@@ -5,7 +5,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 import { Firestore, collectionData } from '@angular/fire/firestore';
-import { collection, addDoc, doc } from 'firebase/firestore';
+import { collection, addDoc, doc, deleteDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 interface MyDateClickArg {
@@ -29,6 +29,7 @@ export class CalendarComponent {
   timeOptions: string[] = [];
   selectedTime: string | null = null;
   meetingTopic: string = '';
+  meetingTopics: string[] = ['Daily', 'Weekly', 'Lunch', 'Feedback', 'Brainstorming', 'Projekt-Review', 'Kick-off'];
 
 
   constructor() {
@@ -41,7 +42,7 @@ export class CalendarComponent {
     this.appointments$.subscribe((changes: any[]) => {
       this.appointments = changes.map((appointment: any) => {
         return {
-          title: `${appointment.userName} - ${appointment.topic}`,
+          title: `${appointment.topic} | ${appointment.userName}`,
           start: appointment.date
         };
       });
@@ -57,7 +58,9 @@ export class CalendarComponent {
     }
   }
 
-
+  /**
+   * calendar settings
+   */
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, interactionPlugin],
@@ -69,7 +72,6 @@ export class CalendarComponent {
       minute: '2-digit',
       meridiem: 'short'
     },
-    eventColor: '#E67708',
     validRange: {
       start: new Date()
     },
@@ -79,13 +81,20 @@ export class CalendarComponent {
       center: 'title',
       right: ''
     },
-
+    eventClick: this.handleEventClick.bind(this),
   };
 
 
   handleDateClick(arg: MyDateClickArg) {
     this.selectedDate = arg.date;
   }
+
+
+  async handleEventClick(arg: any) {
+    const appointmentId = arg.event.id;
+    await this.deleteAppointmentFromBackend(appointmentId);
+  }
+
 
 
   async addAppointmentToBackend(result: any) {
@@ -100,12 +109,18 @@ export class CalendarComponent {
   }
 
 
+  async deleteAppointmentFromBackend(appointmentId: string) {
+    const appointmentDocRef = doc(this.firestore, 'appointments', appointmentId);
+    await deleteDoc(appointmentDocRef);
+  }
+
+
 
   saveMeeting() {
     if (this.selectedUser && this.selectedDate && this.selectedTime && this.meetingTopic.trim()) {
-      
+
       let adjustedDate = new Date(Date.UTC(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate()));
-  
+
       this.addAppointmentToBackend({
         date: new Date(`${adjustedDate.toISOString().split('T')[0]}T${this.selectedTime}:00`),
         selectedUser: this.selectedUser,
@@ -117,8 +132,6 @@ export class CalendarComponent {
       this.meetingTopic = '';
     }
   }
-  
-
 
 
   closeCard() {

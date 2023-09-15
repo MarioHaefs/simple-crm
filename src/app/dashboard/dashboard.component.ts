@@ -6,6 +6,7 @@ import { collection, addDoc, doc, getDoc, deleteDoc, onSnapshot } from 'firebase
 import { User } from 'src/models/user.class';
 import { ChartType, ChartOptions, ChartData } from 'chart.js';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -15,8 +16,7 @@ export class DashboardComponent {
   firestore: Firestore = inject(Firestore);
   user: User = new User();
   userCount: number = 0;
-
-
+  
 
   constructor(private route: ActivatedRoute, public dialog: MatDialog, private router: Router) {
 

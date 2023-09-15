@@ -14,14 +14,14 @@
             <tr>
                 <th>Name</th>
                 <th>E-Mail</th>
-                <th>Position</th>
-                <th>City</th>
+                <th class="d-none">Position</th>
+                <th class="d-none-500">City</th>
             </tr>
             <tr *ngFor="let user of filteredUsers" [routerLink]="['/user/' + user.id]">
                 <td>{{ user.firstName }} {{ user.lastName }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.job }}</td>
-                <td>{{ user.city }}</td>
+                <td class="d-none">{{ user.job }}</td>
+                <td class="d-none-500">{{ user.city }}</td>
             </tr>
         </table>
     </mat-card-content>

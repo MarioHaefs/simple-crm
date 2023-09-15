@@ -116,3 +116,33 @@ mat-icon {
     margin-right: 8px;
 }
 
+@media (max-width: 720px) {
+    mat-card {
+        min-width: 425px !important;
+    }
+}
+
+@media (max-width: 650px) {
+    mat-card {
+        min-height: 70vh !important;
+    }
+}
+
+@media (max-width: 450px) {
+    mat-card {
+        min-width: 375px !important;
+    }
+}
+
+@media (max-width: 400px) {
+    mat-card {
+        min-width: 340px !important;
+    }
+}
+
+@media (max-height: 700px) {
+    h3 {
+        margin-bottom: 32px !important;
+    }
+}
+

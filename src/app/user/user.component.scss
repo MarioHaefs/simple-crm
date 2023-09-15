@@ -1,6 +1,6 @@
 .add-button {
     position: absolute;
-    bottom: 32px;
+    top: 155px;
     right: 32px;
 }
 
@@ -82,8 +82,38 @@ mat-card {
 
 .add-button[mat-fab][color="primary"] {
     background-color: #E67708;
-    &.mat-button-focus-overlay, 
+
+    &.mat-button-focus-overlay,
     &.mat-button-ripple.mat-ripple {
         background-color: rgba(230, 119, 8, 0.2);
+    }
+}
+
+//** Media Query **\\
+
+@media (max-width: 800px) {
+    .add-button {
+        top: 100px;
+    }
+
+    .d-none {
+        display: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .add-button {
+        top: 80px;
+    }
+
+    mat-card {
+        margin-top: 16px;
+        padding-bottom: 70px;
+    }
+}
+
+@media (max-width: 500px) {
+    .d-none-500 {
+        display: none;
     }
 }

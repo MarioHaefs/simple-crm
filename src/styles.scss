@@ -12,6 +12,10 @@ body {
     font-family: "Open Sans", sans-serif !important;
 }
 
+.sidenav-space {
+    margin-left: 200px;
+}
+
 .mr-top-32 {
     margin-top: 32px;
 }
@@ -53,6 +57,11 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+::-webkit-scrollbar {
+    width: 0; 
+    height: 0;
+}
+
 .meeting-template {
     display: flex;
     flex-direction: column;
@@ -86,6 +95,7 @@ input::-webkit-inner-spin-button {
     font-weight: 400;
     font-size: 27px;
     border-left: 3px solid #E67708;
+    line-height: 32px;
 }
 
 .headline {
@@ -100,4 +110,10 @@ input::-webkit-inner-spin-button {
     right: 10%;
     cursor: pointer;
     height: 50px;
+}
+
+@media (max-width: 800px) {
+    .slogan {
+        display: none;
+    }
 }

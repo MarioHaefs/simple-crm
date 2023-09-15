@@ -36,10 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
-
-
-
-
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
@@ -82,6 +79,7 @@ import { MatSelectModule } from '@angular/material/select';
     FullCalendarModule,
     MatListModule,
     MatSelectModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

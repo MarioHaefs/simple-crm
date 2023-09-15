@@ -114,13 +114,17 @@ mat-toolbar-row {
 
 
 @media (max-width: 650px) {
+    mat-toolbar-row {
+        height: 70px;
+    }
+
     .logo-container {
         display: none;
     }
 
     .logo-mobile {
         display: block;
-        height: 50px;
+        height: 60px;
         border-radius: 100%;
         cursor: pointer;
     }
@@ -133,7 +137,7 @@ mat-toolbar-row {
         bottom: 0 !important;
         width: 100%;
         z-index: 1000;
-        height: 75px;
+        height: 70px;
     }
 
     .sidenav-space {
@@ -165,6 +169,18 @@ mat-toolbar-row {
     
     .top-headline {
         display: none;
+    }
+
+    .router-container {
+        padding-top: 8px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    mat-toolbar-row {
+        justify-content: space-between;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
 }

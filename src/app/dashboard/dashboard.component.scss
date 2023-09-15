@@ -38,7 +38,6 @@ mat-card {
     font-weight: bold;
     background-color: #303032;
     color: #E67708;
-    transition: transform 0.3s ease-in-out;
 }
 
 .direction {
@@ -64,6 +63,7 @@ mat-card {
 
 .clickable {
     cursor: pointer;
+    transition: transform 0.3s ease-in-out;
 
     &:hover {
         transform: scale(1.05);
@@ -87,3 +87,101 @@ mat-card {
     }
 }
 
+//** Media Query **\\
+
+@media (max-width: 800px) {
+    .guidelines-card {
+        font-size: 24px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 650px) {
+    .line-chart-container {
+        display: none;
+    }
+
+    .dashboard-content {
+        padding-bottom: 75px;
+        justify-content: center;
+    }
+
+    .direction {
+        span {
+            margin-bottom: 5px;
+        }
+
+        img {
+            width: 80px;
+            margin-top: 5px;
+        }
+    }
+
+    .customer-amount {
+        margin-top: 10px;
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 550px) {
+    .guidelines-card {
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    .direction {
+        img {
+            width: 50px;
+        }
+    }
+
+    .chart-headline {
+        margin-top: 10px;
+        font-size: 16px;
+
+        span {
+            margin-left: 5px;
+        }
+    }
+
+    .pie-chart {
+        padding: 5px;
+    }
+}
+
+@media (max-width: 500px) {
+    .chart-colors {
+        display: none;
+    }
+
+    mat-card {
+        height: 150px;
+    }
+
+    .customer-amount {
+        margin-top: 5px;
+        font-size: 24px;
+    }
+
+    .dashboard-content {
+        margin-top: 32px;
+    }
+}
+
+@media (max-width: 430px) {
+    .guidelines-card {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 380px) and (max-height: 670px) {
+    .dashboard-content {
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 360px) and (max-height: 800px) {
+    .guidelines-card {
+        font-size: 15px;
+    }
+}

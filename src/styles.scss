@@ -58,7 +58,7 @@ input::-webkit-inner-spin-button {
 }
 
 ::-webkit-scrollbar {
-    width: 0; 
+    width: 0;
     height: 0;
 }
 
@@ -112,8 +112,21 @@ input::-webkit-inner-spin-button {
     height: 50px;
 }
 
+//** Media Query **\\
+
 @media (max-width: 800px) {
     .slogan {
+        display: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .headline {
+        font-size: 40px;
+        padding-right: 0;
+    }
+
+    .component-head {
         display: none;
     }
 }

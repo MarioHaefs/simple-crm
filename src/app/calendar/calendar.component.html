@@ -1,5 +1,12 @@
 <div (click)="closeCard()" *ngIf="selectedDate" class="overlay"></div>
 
+<div class="component-head">
+  <div class="headline">Calendar</div>
+  <div class="slogan">
+      <span>Simply organized!</span>
+  </div>
+</div>
+
 <full-calendar [options]="calendarOptions"></full-calendar>
 
 <mat-card *ngIf="selectedDate" class="meeting-card">

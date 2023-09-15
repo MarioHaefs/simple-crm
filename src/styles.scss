@@ -94,3 +94,10 @@ input::-webkit-inner-spin-button {
     padding-right: 30px;
     margin: 0;
 }
+
+.arrow-back {
+    position: absolute;
+    right: 10%;
+    cursor: pointer;
+    height: 50px;
+}

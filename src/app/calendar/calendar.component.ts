@@ -35,6 +35,10 @@ export class CalendarComponent {
 
 
   constructor() {
+
+    /**
+     * initializes user data, fetches users and appointments from the db
+     */
     this.users$ = collectionData(collection(this.firestore, 'users'), { idField: 'id' });
     this.users$.subscribe((changes: any) => {
       this.allUsers = changes;
@@ -53,6 +57,9 @@ export class CalendarComponent {
     });
 
 
+    /**
+     * sets up time options for appointment scheduling
+     */
     for (let hour = 8; hour <= 18; hour++) {
       for (let minute of [0, 30]) {
         const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
@@ -86,10 +93,15 @@ export class CalendarComponent {
       right: ''
     },
     eventClick: this.handleEventClick.bind(this),
-    eventContent: this.renderEventContent.bind(this)
+    eventContent: this.renderEventContent.bind(this),
   };
 
-  
+
+  /**
+   * renders the content of a calendar entry. displays the time, the meeting title, and a delete icon.
+   * @param {any} eventInfo - information about the event.
+   * @returns {any} an object defining the HTML content for the calendar event.
+   */
   renderEventContent(eventInfo: any): any {
     let formattedTime = '';
     if (eventInfo.event.start) {
@@ -109,23 +121,33 @@ export class CalendarComponent {
   }
 
 
+  /**
+   * handles the click on a specific date in the calendar and sets the selected date.
+   * @param {MyDateClickArg} arg - contains the selected date.
+   */
   handleDateClick(arg: MyDateClickArg) {
     this.selectedDate = arg.date;
   }
 
 
+  /**
+   * handles the click on a calendar event. if the delete icon is clicked, the event gets deleted.
+   * @param {any} arg - information about the clicked event.
+   */
   async handleEventClick(arg: any) {
     if (arg.jsEvent.target.classList.contains('delete-icon')) {
       const appointmentId = arg.event.id;
-      
+
       await this.deleteAppointmentFromBackend(appointmentId);
       arg.event.remove();
     }
   }
 
 
-
-
+  /**
+   * adds a new appointment to the backend.
+   * @param {any} result - an object containing information about the new appointment.
+   */
   async addAppointmentToBackend(result: any) {
     const { date, selectedUser, topic } = result;
 
@@ -138,13 +160,19 @@ export class CalendarComponent {
   }
 
 
+  /**
+   * deletes an appointment from the backend.
+   * @param {string} appointmentId - the id of the appointment to be deleted.
+   */
   async deleteAppointmentFromBackend(appointmentId: string) {
     const appointmentDocRef = doc(this.firestore, 'appointments', appointmentId);
     await deleteDoc(appointmentDocRef);
   }
 
 
-
+  /**
+   * saves a new meeting using the selected data and times.
+   */
   saveMeeting() {
     if (this.selectedUser && this.selectedDate && this.selectedTime && this.meetingTopic.trim()) {
 
@@ -163,6 +191,9 @@ export class CalendarComponent {
   }
 
 
+  /**
+   * closes the currently opened card
+   */
   closeCard() {
     this.selectedDate = null;
   }

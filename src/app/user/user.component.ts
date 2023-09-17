@@ -33,7 +33,12 @@ export class UserComponent {
 
   }
 
-
+  
+  /**
+   * filters the user list based on a given input value.
+   * @param {Event} event - event object originating from the input element.
+   * @returns {void} modifies the filteredUsers array with users matching the filter criteria.
+   */
   applyFilter(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     const filterValue = inputElement.value.toLowerCase();

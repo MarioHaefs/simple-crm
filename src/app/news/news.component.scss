@@ -37,3 +37,42 @@
         margin-top: 8px;
     }
 }
+
+//** Media Query **\\
+
+@media (max-width: 1090px) {
+    .news-card {
+        height: 300px;
+        width: 300px;
+
+        img {
+            height: 300px;
+            width: 300px;
+        }
+    }
+}
+
+@media (max-width: 880px) {
+    .news-card {
+        height: 250px;
+        width: 200px;
+
+        img {
+            height: 250px;
+            width: 200px;
+        }
+
+        h2 {
+            font-size: 14px;
+            line-height: 15px;
+            margin-top: 4px;
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .news-container {
+        justify-content: center;
+        padding-bottom: 75px;
+    }
+}

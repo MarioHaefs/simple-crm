@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 import { Firestore, collectionData } from '@angular/fire/firestore';
 import { collection, addDoc, doc, deleteDoc } from 'firebase/firestore';
@@ -12,11 +11,14 @@ interface MyDateClickArg {
   date: Date;
 }
 
+
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
+
+
 export class CalendarComponent {
   user = new User;
   users$: Observable<any[]>;
@@ -59,6 +61,7 @@ export class CalendarComponent {
     }
   }
 
+
   /**
    * calendar settings
    */
@@ -86,6 +89,7 @@ export class CalendarComponent {
     eventContent: this.renderEventContent.bind(this)
   };
 
+  
   renderEventContent(eventInfo: any): any {
     let formattedTime = '';
     if (eventInfo.event.start) {

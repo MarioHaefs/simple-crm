@@ -130,3 +130,9 @@ input::-webkit-inner-spin-button {
         display: none;
     }
 }
+
+@media (max-width: 900px) {
+    .fc-daygrid-event {
+      white-space: normal !important;
+    }
+  }

@@ -37,6 +37,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { LayoutModule } from '@angular/cdk/layout';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     FullCalendarModule,
     MatListModule,
     MatSelectModule,
-    LayoutModule
+    LayoutModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

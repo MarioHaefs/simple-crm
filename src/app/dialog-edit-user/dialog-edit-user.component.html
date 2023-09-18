@@ -1,56 +1,56 @@
-<form #userForm="ngForm" (ngSubmit)="saveUser()">
+<form [formGroup]="userForm" (ngSubmit)="saveUser()">
 
     <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 
-    <h1 mat-dialog-title>Edit User</h1>
+    <h1 mat-dialog-title>Edit Customer</h1>
     <div mat-dialog-content>
         <div>
             <mat-form-field class="margin-right">
                 <mat-label>First name</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.firstName" name="firstName" matInput required>
+                <input formControlName="firstName" matInput required>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Last name</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.lastName" name="lastName" matInput required>
+                <input formControlName="lastName" matInput required>
             </mat-form-field>
         </div>
-        <div>
+        <div>   
             <mat-form-field class="full-width">
-                <mat-label>E-Mail</mat-label>
-                <input type="email" [disabled]="loading" [(ngModel)]="user.email" name="email" matInput required>
-            </mat-form-field>
+                <mat-label>E-Mail</mat-label >
+                <input type="email" formControlName="email" matInput required>
+            </mat-form-field>            
         </div>
         <div>
             <mat-form-field class="margin-right">
                 <mat-label>Job title</mat-label>
-                <input type="text" [disabled]="loading" [(ngModel)]="user.job" name="jobTitle" matInput required>
+                <input type="text" formControlName="job" matInput required>
             </mat-form-field>  
             <mat-form-field>
                 <mat-label>Phone number</mat-label>
-                <input type="tel" [disabled]="loading" [(ngModel)]="user.phone" name="phone" matInput required>
+                <input type="tel" formControlName="phone" matInput required>
             </mat-form-field>
         </div>
-
         <div>
             <mat-form-field class="full-width">
                 <mat-label>Address</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.address" name="address" matInput required>
+                <input formControlName="address" matInput required>
             </mat-form-field>
         </div>
         <div>
             <mat-form-field class="margin-right">
                 <mat-label>Zip code</mat-label>
-                <input type="number" [disabled]="loading" [(ngModel)]="user.zipCode" name="zipCode" matInput required>
+                <input type="number" formControlName="zipCode" matInput required>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>City</mat-label>
-                <input [disabled]="loading" [(ngModel)]="user.city" name="city" matInput required>
+                <input formControlName="city" matInput required>
             </mat-form-field>
         </div>
     </div>
     <div mat-dialog-actions>
-        <button [disabled]="loading" mat-button (click)="closeDialog()">Cancel</button>
+        <button type="button" mat-button (click)="closeDialog()">Cancel</button>
         <button [disabled]="loading || !userForm.valid" type="submit" mat-button>Save</button>
     </div>
+
 </form>
 

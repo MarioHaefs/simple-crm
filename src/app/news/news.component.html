@@ -9,11 +9,11 @@
     <div class="news-content" *ngFor="let article of news">
         <a [href]="article.url" target="_blank">
             <mat-card class="news-card">
-                <img mat-card-image [src]="article.urlToImage" (error)="onImageError($event)" alt="News image">
+                <img mat-card-image [src]="article.image" (error)="onImageError($event)" alt="News image">
                 <mat-card-content>
                     <h2>{{ article.title }}</h2>
                 </mat-card-content>
             </mat-card>
         </a>
-    </div>
+    </div>    
 </div>

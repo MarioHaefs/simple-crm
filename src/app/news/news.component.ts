@@ -25,10 +25,10 @@ export class NewsComponent {
    * fetch news from NewsAPI
    */
   fetchNews() {
-    const url = 'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=76096daff2d347f3b8b5af8a42e538a5';
+    const url = 'https://api.currentsapi.services/v1/latest-news?category=technology,business&language=en&apiKey=9GjhwQ_zvDyVu_SWeQiBjqF3qAknDuTbL_sWLtFrjX47Mpz9';
 
     this.http.get<any>(url).subscribe(data => {
-      this.news = data.articles;
+      this.news = data.news;
     });
   }
 

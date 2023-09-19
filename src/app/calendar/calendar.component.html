@@ -42,6 +42,7 @@
     <mat-card-actions>
       <button type="button" mat-button (click)="closeCard()">Cancel</button>
       <button type="submit" mat-button [disabled]="!meetingTopic.trim()" (click)="saveMeeting()">Save</button>
+      <button *ngIf="editingExistingAppointment" type="button" mat-button (click)="deleteSelectedMeeting()">Delete</button>
     </mat-card-actions>
   </mat-card-content>
 </mat-card>

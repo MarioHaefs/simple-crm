@@ -4,7 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { User } from 'src/models/user.class';
 import { Firestore, collectionData } from '@angular/fire/firestore';
-import { collection, addDoc, doc, deleteDoc } from 'firebase/firestore';
+import { collection, addDoc, doc, deleteDoc, updateDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 interface MyDateClickArg {
@@ -32,6 +32,7 @@ export class CalendarComponent {
   selectedTime: string | null = null;
   meetingTopic: string = '';
   meetingTopics: string[] = ['Daily', 'Weekly', 'Lunch', 'Feedback', 'Brainstorming', 'Projekt-Review', 'Kick-off'];
+  editingExistingAppointment: boolean = false;
 
 
   constructor() {
@@ -114,7 +115,6 @@ export class CalendarComponent {
         <div class="meeting-template">
           <span>${formattedTime}</span>
           <span><b>${eventInfo.event.title}</b></span>
-          <i class="material-icons delete-icon" style="cursor: pointer;">delete</i>
         </div>
       `
     };
@@ -127,6 +127,10 @@ export class CalendarComponent {
    */
   handleDateClick(arg: MyDateClickArg) {
     this.selectedDate = arg.date;
+    this.selectedUser = null;
+    this.selectedTime = null;
+    this.meetingTopic = '';
+    this.editingExistingAppointment = false;
   }
 
 
@@ -134,12 +138,39 @@ export class CalendarComponent {
    * handles the click on a calendar event. if the delete icon is clicked, the event gets deleted.
    * @param {any} arg - information about the clicked event.
    */
-  async handleEventClick(arg: any) {
-    if (arg.jsEvent.target.classList.contains('delete-icon')) {
-      const appointmentId = arg.event.id;
+  handleEventClick(arg: any) {
+    this.selectedDate = arg.event.start;
+    const existingAppointment = this.appointments.find(appointment => appointment.id === arg.event.id);
+    if (existingAppointment) {
+      this.editingExistingAppointment = true;
+      this.meetingTopic = existingAppointment.title.split('|')[0].trim();
+      this.selectedUser = this.allUsers.find(user => `${user.firstName} ${user.lastName}` === existingAppointment.title.split('|')[1].trim()) || null;
+      this.selectedTime = `${arg.event.start.getHours().toString().padStart(2, '0')}:${arg.event.start.getMinutes().toString().padStart(2, '0')}`;
+    }
+  }
 
-      await this.deleteAppointmentFromBackend(appointmentId);
-      arg.event.remove();
+
+  /**
+   * deletes the specified appointment from both the local state and the db.
+   * @param {string} appointmentId - id of the appointment to be deleted.
+   */
+  async deleteAppointment(appointmentId: string) {
+    await this.deleteAppointmentFromBackend(appointmentId);
+    this.appointments = this.appointments.filter(app => app.id !== appointmentId);
+    this.calendarOptions.events = [...this.appointments];
+    this.closeCard();
+  }
+
+
+  /**
+   * deletes the selected meeting from the local state and db based on the user and selected date.
+   */
+  async deleteSelectedMeeting() {
+    if (this.selectedUser && this.selectedDate) {
+      const existingAppointment = this.appointments.find(app => new Date(app.start).toDateString() === this.selectedDate!.toDateString() && app.title.includes(this.selectedUser!.firstName));
+      if (existingAppointment) {
+        await this.deleteAppointment(existingAppointment.id);
+      }
     }
   }
 
@@ -161,6 +192,22 @@ export class CalendarComponent {
 
 
   /**
+   * updates an existing appointment in the backend with new information.
+   * @param {string} appointmentId - id of the appointment to be updated.
+   * @param {any} result - an object containing the updated appointment information.
+   */
+  async updateAppointmentInBackend(appointmentId: string, result: any) {
+    const appointmentDocRef = doc(this.firestore, 'appointments', appointmentId);
+    await updateDoc(appointmentDocRef, {
+      date: result.date.toISOString(),
+      userId: result.selectedUser.id,
+      userName: `${result.selectedUser.firstName} ${result.selectedUser.lastName}`,
+      topic: result.topic
+    });
+  }
+
+
+  /**
    * deletes an appointment from the backend.
    * @param {string} appointmentId - the id of the appointment to be deleted.
    */
@@ -175,14 +222,27 @@ export class CalendarComponent {
    */
   saveMeeting() {
     if (this.selectedUser && this.selectedDate && this.selectedTime && this.meetingTopic.trim()) {
-
       let adjustedDate = new Date(Date.UTC(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate()));
+      const eventDate = new Date(`${adjustedDate.toISOString().split('T')[0]}T${this.selectedTime}:00`);
 
-      this.addAppointmentToBackend({
-        date: new Date(`${adjustedDate.toISOString().split('T')[0]}T${this.selectedTime}:00`),
-        selectedUser: this.selectedUser,
-        topic: this.meetingTopic
-      });
+      // Überprüfen, ob der Termin bereits existiert
+      const existingAppointment = this.appointments.find(appointment => appointment.start === eventDate.toISOString());
+      if (existingAppointment) {
+        // Termin aktualisieren
+        this.updateAppointmentInBackend(existingAppointment.id, {
+          date: eventDate,
+          selectedUser: this.selectedUser,
+          topic: this.meetingTopic
+        });
+      } else {
+        // Neuen Termin hinzufügen
+        this.addAppointmentToBackend({
+          date: eventDate,
+          selectedUser: this.selectedUser,
+          topic: this.meetingTopic
+        });
+      }
+
       this.selectedDate = null;
       this.selectedUser = null;
       this.selectedTime = null;

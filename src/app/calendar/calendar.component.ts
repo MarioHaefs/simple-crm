@@ -95,6 +95,7 @@ export class CalendarComponent {
     },
     eventClick: this.handleEventClick.bind(this),
     eventContent: this.renderEventContent.bind(this),
+    height: 'auto'
   };
 
 

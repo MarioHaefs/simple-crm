@@ -4,13 +4,12 @@
         <form class="sign-up-form">
             <img class="arrow-left" [routerLink]="''" src="/assets/img/sign-up-arrow.png">
             <span class="sign-up-headline">Sign up</span>
-            <input id="register-name" class="input" placeholder="Name" type="text" required>
-            <input id="sign-up-email" class="input" placeholder="Email" type="email" required>
-            <input id="sign-up-password" class="input" placeholder="Password" type="password" required>
+            <input [(ngModel)]="name" name="name" class="input" placeholder="Name" type="text" required>
+            <input [(ngModel)]="email" name="email" class="input" placeholder="Email" type="email" required>
+            <input [(ngModel)]="password" name="password" class="input" placeholder="Password" type="password" required>
             <div class="mobile-login-buttons">
-                <button class="button">Sign up</button>
+                <button class="button" (click)="signUp(email, password)">Sign up</button>
             </div>
         </form>
     </div>
 </div>
-

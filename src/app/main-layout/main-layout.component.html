@@ -1,0 +1,33 @@
+<div class="sidenav">
+    <div class="logo-container">
+      <img [routerLink]="'/dashboard'" routerLinkActive="active-route" class="logo" src="/assets/img/logo.png">
+    </div>
+  
+    <ul class="menu-items">
+      <li [routerLink]="'/dashboard'" routerLinkActive="active-route"><mat-icon>dashboard</mat-icon>Dashboard</li>
+      <li [routerLink]="'/user'" routerLinkActive="active-route"><mat-icon>person</mat-icon>Customers</li>
+      <li [routerLink]="'/news'" routerLinkActive="active-route"><mat-icon>feed</mat-icon>News</li>
+      <li [routerLink]="'/calendar'" routerLinkActive="active-route"><mat-icon>calendar_month</mat-icon>Calendar</li>
+    </ul>
+  </div>
+  
+  <div class="sidenav-space">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <div class="align-center">
+          <span class="top-headline">Simple-CRM</span>
+          <img [routerLink]="'/dashboard'" routerLinkActive="active-route" class="logo-mobile" src="/assets/img/logo.png">
+        </div>
+        <div class="align-center">
+          <img src="/assets/img/imprint-icon.png" class="help-icon" [routerLink]="'/legal-notice'">
+          <img [routerLink]="'/info'" class="help-icon" src="/assets/img/help-icon.png">
+          <img class="profil-img" src="/assets/img/profil-img.png">
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  
+    <div class="router-container">
+      <router-outlet></router-outlet>
+    </div>
+  
+  </div>

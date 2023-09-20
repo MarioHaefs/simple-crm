@@ -38,6 +38,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -52,7 +55,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     InfoComponent,
     LegalNoticeComponent,
     NewsComponent,
-    CalendarComponent
+    CalendarComponent,
+    MainLayoutComponent,
+    SignUpComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +87,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     MatSelectModule,
     LayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

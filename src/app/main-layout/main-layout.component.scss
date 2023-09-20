@@ -1,0 +1,187 @@
+.logo {
+    border-radius: 100%;
+    height: 120px;
+    margin-top: 32px;
+    cursor: pointer;
+}
+
+.menu-icon {
+    height: 30px;
+    margin-right: 32px;
+    cursor: pointer;
+    object-fit: cover;
+
+    &:hover {
+        opacity: 0.75;
+    }
+}
+
+.top-headline {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.sidenav {
+    position: fixed;
+    width: 200px;
+    background-color: #303032;
+    color: white;
+    top: 0;
+    bottom: 0;
+    float: left;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 75px;
+}
+
+.menu-items {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    font-size: 16px;
+
+    li {
+        padding-left: 16px;
+        padding-right: 16px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        &.active-route,
+        &:hover {
+            background-color: #1a1a1b;
+            color: #E67708;
+        }
+    }
+
+    mat-icon {
+        margin-right: 16px;
+    }
+}
+
+.router-container {
+    padding-top: 16px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 16px;
+}
+
+mat-toolbar[color="primary"] {
+    background-color: white;
+    color: black;
+    box-shadow: -2px 0px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+.profil-img {
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.help-icon {
+    cursor: pointer;
+    margin-right: 10px;
+    height: 35px;
+    // margin-right: 16px;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+mat-toolbar-row {
+    justify-content: space-between;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
+}
+
+.logo-mobile {
+    display: none;
+}
+
+
+@media (max-width: 650px) {
+    mat-toolbar-row {
+        height: 70px;
+    }
+
+    .logo-container {
+        display: none;
+    }
+
+    .logo-mobile {
+        display: block;
+        height: 60px;
+        border-radius: 100%;
+        cursor: pointer;
+    }
+
+    .sidenav {
+        float: none;
+        top: unset;
+        left: 0;
+        right: 0;
+        bottom: 0 !important;
+        width: 100%;
+        z-index: 1000;
+        height: 70px;
+    }
+
+    .sidenav-space {
+        margin-left: 0px;
+    }
+
+    .menu-items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-left: 8px;
+            padding-right: 8px;
+            height: 75px;
+            width: 100px;
+        }
+
+        mat-icon {
+            margin-right: 0px;
+            margin-bottom: 5px;
+        }
+    }
+    
+    .top-headline {
+        display: none;
+    }
+
+    .router-container {
+        padding-top: 8px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 80px;
+    }
+
+    mat-toolbar-row {
+        justify-content: space-between;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+}

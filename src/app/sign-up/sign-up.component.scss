@@ -72,9 +72,9 @@
         border: none;
         font-size: 16px;
         text-decoration: none;
-        margin-right: 24px;
         width: 120px;
         transition: all 0.2s ease-in-out;
+        margin-top: 24px;
 
         &:hover {
             background-color: #303032;
@@ -87,12 +87,6 @@
 
 /*** MEDIA QUERY ***/
 @media (max-width: 600px) {
-
-    /*** Login Page ***/
-    .form-class {
-        height: 450px !important;
-    }
-
     .form-width-mobile {
         margin-right: 8px;
         margin-left: 8px;
@@ -102,11 +96,6 @@
         top: 3% !important;
         height: 100px;
         left: unset !important;
-    }
-
-    .mobile-login-buttons {
-        display: flex;
-        flex-direction: column;
     }
 
     .button {

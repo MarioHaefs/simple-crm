@@ -113,6 +113,32 @@ mat-toolbar-row {
     display: none;
 }
 
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 50px;
+    background-color: #303032;
+    color: #E67708;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    z-index: 50;
+    cursor: pointer;
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+
+    &:hover {
+        filter: brightness(1.2);
+    }
+}
+
+.dropdown-menu {
+    display: block;
+}
+
+//** Media Query **\\
 
 @media (max-width: 650px) {
     mat-toolbar-row {
@@ -166,7 +192,7 @@ mat-toolbar-row {
             margin-bottom: 5px;
         }
     }
-    
+
     .top-headline {
         display: none;
     }

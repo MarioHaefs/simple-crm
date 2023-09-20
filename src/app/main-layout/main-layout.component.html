@@ -21,7 +21,10 @@
         <div class="align-center">
           <img src="/assets/img/imprint-icon.png" class="help-icon" [routerLink]="'/legal-notice'">
           <img [routerLink]="'/info'" class="help-icon" src="/assets/img/help-icon.png">
-          <img class="profil-img" src="/assets/img/profil-img.png">
+          <img class="profil-img" src="/assets/img/profil-img.png" (click)="toggleDropdown()">
+          <div (click)="logout()" class="dropdown-menu" *ngIf="showDropdown">
+            Log out
+        </div>
         </div>
       </mat-toolbar-row>
     </mat-toolbar>

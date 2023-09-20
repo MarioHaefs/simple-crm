@@ -10,8 +10,8 @@
             <input [(ngModel)]="email" name="email" class="email-input" placeholder="Email" type="email" required>
             <input [(ngModel)]="password" name="password" class="password-input" placeholder="Password" type="password" required>
             <div class="mobile-login-buttons">
-                <button class="button" (click)="login(email, password)">Log in</button>
-                <button class="button">Guest Log in</button>
+                <button class="button" (click)="login(email, password)">{{loginButtonContent}}</button>
+                <button (click)="guestLogIn()" class="button">Guest Log in</button>
             </div>
         </form>
     </div>

@@ -76,7 +76,7 @@
 
             .password-input {
                 outline: none;
-                margin-bottom: 48px;
+                margin-bottom: 32px;
                 width: 60%;
                 padding: 10px;
                 border-radius: 8px;
@@ -85,6 +85,11 @@
 
             ::placeholder {
                 opacity: 0.5;
+            }
+
+            .mobile-login-buttons {
+                display: flex;
+                flex-direction: column;
             }
         }
     }
@@ -99,8 +104,8 @@
         border: none;
         font-size: 16px;
         text-decoration: none;
-        margin-right: 24px;
         width: 120px;
+        margin-bottom: 24px;
         transition: all 0.2s ease-in-out;
 
         &:hover {
@@ -129,11 +134,6 @@
         top: 3% !important;
         height: 100px;
         left: unset !important;
-    }
-
-    .mobile-login-buttons {
-        display: flex;
-        flex-direction: column;
     }
 
     .button {
